@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "iti_grading_system",
+            "database": "iti-grading-system",
+            "username": "tarikwaleed",
+            "password": "Takysme3#"
+        }
+    ]
+}

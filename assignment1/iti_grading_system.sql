@@ -1,11 +1,12 @@
-DROP TABLE IF EXISTS `students`;
+DROP TABLE IF EXISTS students;
 
 CREATE TABLE `students` (
     `student_id` int NOT NULL,
     `student_name` varchar(45) NOT NULL,
-    `email` varchar(45) NOT NULL,
-    `address` varchar(45) NOT NULL,
-    PRIMARY KEY (`student_id`),
+    `student_email` varchar(45) NOT NULL,
+    `student_address` varchar(45) NOT NULL,
+    PRIMARY KEY (`student_id`)
+
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 INSERT INTO
@@ -34,7 +35,7 @@ VALUES
         'ali ebraheem',
         'aliebraheem@gmail.com',
         'assiut'
-    );
+    )
 
 DROP TABLE IF EXISTS `students_phones`;
 
@@ -53,7 +54,7 @@ VALUES
     (20, `01164444186`),
     (20, `01243494580`),
     (30, `01108804006`),
-    (30, `01568894786`);
+    (30, `01568894786`),
 
 DROP TABLE IF EXISTS `courses`;
 
@@ -62,7 +63,7 @@ CREATE TABLE `courses` (
     `course_name` varchar(10) NOT NULL,
     `description` varchar(45) NOT NULL,
     `max_score` int NOT NULL,
-    PRIMARY KEY (`course_code`),
+    PRIMARY KEY (`course_code`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 INSERT INTO
@@ -82,16 +83,16 @@ VALUES
     ),
     (201, 'html', 'web design basics', 100),
     (301, 'css', 'advanced web design', 100),
-    (402, 'js', 'web programming fundamentals', 100);
+    (402, 'js', 'web programming fundamentals', 100)
 
 DROP TABLE IF EXISTS `enrolled`;
 
 CREATE TABLE `enrolled` (
     `student_id` int NOT NULL,
-    `course_code` varchar(10) NOT NULL,
+    `course_code` int NOT NULL,
     PRIMARY KEY (`student_id`, `course_code`),
     CONSTRAINT `enrolled_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`),
-    CONSTRAINT `enrolled_ibfk_2` FOREIGN KEY (`course_code`) REFERENCES `courses` (`course_code`),
+    CONSTRAINT `enrolled_ibfk_2` FOREIGN KEY (`course_code`) REFERENCES `courses` (`course_code`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 INSERT INTO
@@ -106,18 +107,18 @@ VALUES
     (40, 402),
     (40, 301),
     (30, 402),
-    (30, 301);
+    (30, 301),
 
 DROP TABLE IF EXISTS `exam_in`;
 
 CREATE TABLE `exam_in` (
     `student_id` int NOT NULL,
-    `course_code` varchar(10) NOT NULL,
+    `course_code` int NOT NULL,
     `exam_date` date NOT NULL,
     `exam_result` int NOT NULL,
     PRIMARY KEY (`student_id`, `course_code`),
     CONSTRAINT `exam_in_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`),
-    CONSTRAINT `exam_in_ibfk_2` FOREIGN KEY (`course_code`) REFERENCES `courses` (`course_code`),
+    CONSTRAINT `exam_in_ibfk_2` FOREIGN KEY (`course_code`) REFERENCES `courses` (`course_code`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 INSERT INTO
@@ -128,4 +129,4 @@ VALUES
     (30, 201, '2020-08-19', 80),
     (30, 402, '2020-07-22', 70),
     (30, 301, '2020-08-21', 60),
-    (40, 201, '2020-01-12', 90),
+    (40, 201, '2020-01-12', 90)
