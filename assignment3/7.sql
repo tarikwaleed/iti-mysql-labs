@@ -6,3 +6,4 @@ BEGIN
 return CONCAT('hello', ' ', name);
 END //
 DELIMITER;
+SELECT sayhello("tarik")
